@@ -1,0 +1,44 @@
+/ RELIABILITY TRIAL 1 - 
+/ LOW MAINTENANCE
+
+/ Tests using the language and the 
+/ tree capabilities to calculate 
+/ system reliability.
+
+/ SAME CONFIGURATION
+
+plant = unit1 and unit2;
+unit1 = boiler1 & turbine1 & bop1;
+boiler1 = boiler1S or boiler1F;
+boiler1F = bfp1 & otherboiler1;
+bfp1 = bfp11 or bfp12;
+turbine1 = turbine1S or turbine1F;
+unit2 = boiler2 & turbine2 & bop2;
+boiler2 = boiler2S or boiler2F;
+boiler2F = bfp2 & otherboiler2;
+bfp2 = bfp21 or bfp22;
+turbine2 = turbine2S or turbine2F;
+
+
+/ Data set Low Maintenance
+
+boiler1S ( 1, 1, 580, 1);
+boiler2S ( 1, 150, 580, 1);
+
+bfp11 (59, 980);
+bfp12 (59, 980);
+bfp21 (59, 980);
+bfp22 (59, 980);
+
+otherboiler1 (24, 1000);
+otherboiler2 (28, 1000);
+
+turbine1S ( 1, 1,580,1);
+turbine1F (39, 1548);
+
+turbine2S ( 1, 150,580,1);
+turbine2F (27, 1700);
+
+bop1 (10, 7200);
+bop2 (35, 7200);
+

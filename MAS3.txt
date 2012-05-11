@@ -1,0 +1,38 @@
+/ this program tests it as a 
+/ rapid prototyping tool
+/ for testing online MAS systems
+
+homeAgent1 possesses Sensor01 at 100; 
+homeAgent2 possesses Sensor02 at 100; 
+homeAgent3 possesses Sensor03 at 100; 
+
+limitPower1 achieves  keepWithIn1;
+limitPower2 achieves  keepWithIn2;
+limitPower1 achieves  keepWithIn3;
+
+limitPower1 requires  smartMeterReader1;
+limitPower2 requires  smartMeterReader2;
+limitPower3 requires  smartMeterReader3;
+
+/ Tree Specification
+
+NeighborhoodManagement = initRTS & keepWithIn;
+keepWithIn = keepWithIn1 &  keepWithIn2 & keepWithIn3; 
+initRTS triggers keeepWithIn;
+
+/ trigger top goal to start simulation
+
+trigger NeighborhoodManagement at time 1;
+
+/ computer will assign agents as needed
+
+initRTS(100,100);
+keepWithIn1 (1,400);
+keepWithIn2 (1,300);
+keepWithIn3 (1,300);
+homeAgent1 assigned  limitPower1 to keepWithIn1 at time 1;
+homeAgent2 assigned  limitPower2 to keepWithIn2 at time 1;
+homeAgent3 assigned  limitPower3 to keepWithIn3 at time 1;
+
+
+/ at each time slice, read data and assess success/failure
